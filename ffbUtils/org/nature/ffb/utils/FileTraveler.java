@@ -20,6 +20,9 @@ public class FileTraveler {
 	public void travel(File file) {
 		if (file.isDirectory()) {
 			File[] files = file.listFiles(filter);
+			if (files==null){
+				return;
+			}
 			for (int i = 0; i < files.length; i++) {
 				
 				travel(files[i]);

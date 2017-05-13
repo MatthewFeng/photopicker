@@ -49,7 +49,7 @@ public class PhotoPicker {
 			 return date;
 		 }
 
-		if (!f.getName().toLowerCase().endsWith("jpg")|| f.getName().toLowerCase().endsWith("jpeg")) {
+		if (!(f.getName().toLowerCase().endsWith("jpg")|| f.getName().toLowerCase().endsWith("jpeg"))) {
 			return new Date(f.lastModified());
 		} else {
 
@@ -138,6 +138,10 @@ public class PhotoPicker {
 
 	public static void main(String[] args) {
 		PhotoPicker p = new PhotoPicker();
+		
+//		if (args==null||args.length==0){
+//			args= new String [] {"F:\\ffb\\03_picture\\source","F:\\ffb\\03_picture","2",""};
+//		}
 		if (p.precheck(args)) {
 			p.pick();
 		}
