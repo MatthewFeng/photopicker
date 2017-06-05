@@ -1,4 +1,5 @@
 package cn.ffb.tools;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -33,41 +34,42 @@ public class PhotoPicker {
 	private String mode;
 	private String type;
 
-	public  Date getPhotoDate(File f) {
-		Date date=null;
-		String fileName =f.getName();
-		
-		
-		 SimpleDateFormat  df  =  new  SimpleDateFormat("yyyy-MM-dd HHmmss");  
-		 
-		 try {
+	public Date getPhotoDate(File f) {
+		Date date = null;
+		String fileName = f.getName();
+
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HHmmss");
+
+		try {
 			date = df.parse(fileName);
 		} catch (ParseException e1) {
 		}
-		
-		 if (date!=null){
-			 return date;
-		 }
 
-		if (!f.getName().toLowerCase().endsWith("jpg")|| f.getName().toLowerCase().endsWith("jpeg")) {
+		if (date != null) {
+			return date;
+		}
+
+		if (!f.getName().toLowerCase().endsWith("jpg") || f.getName().toLowerCase().endsWith("jpeg")) {
 			return new Date(f.lastModified());
 		} else {
 
 			Metadata metadata;
-			
+
 			try {
 				metadata = ImageMetadataReader.readMetadata(f);
-				Directory directory =metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
-				 date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
+				Directory directory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
+				if (directory != null) {
+					date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
+				}
 			} catch (ImageProcessingException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+//				e.printStackTrace();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
-			if (date==null) {
-			date = new Date(f.lastModified());
+			if (date == null) {
+				date = new Date(f.lastModified());
 			}
 			return date;
 		}
@@ -143,6 +145,5 @@ public class PhotoPicker {
 		}
 
 	}
-	
 
 }
