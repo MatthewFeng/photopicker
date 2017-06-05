@@ -1,0 +1,1 @@
+java -cp .;lib\* cn.ffb.tools.PhotoPicker E:\picture\source E:\picture\  2  0
