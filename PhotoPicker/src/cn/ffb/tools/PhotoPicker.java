@@ -45,38 +45,37 @@ public class PhotoPicker {
 		} catch (ParseException e1) {
 		}
 
-<<<<<<< HEAD
 		if (date != null) {
 			return date;
 		}
 
 		if (!f.getName().toLowerCase().endsWith("jpg") || f.getName().toLowerCase().endsWith("jpeg")) {
-=======
-		if (!(f.getName().toLowerCase().endsWith("jpg")|| f.getName().toLowerCase().endsWith("jpeg"))) {
->>>>>>> a2edd895c0fc808f605a738848a716fc6d6ba366
-			return new Date(f.lastModified());
-		} else {
+			if (!(f.getName().toLowerCase().endsWith("jpg") || f.getName().toLowerCase().endsWith("jpeg"))) {
+				return new Date(f.lastModified());
+			} else {
 
-			Metadata metadata;
+				Metadata metadata;
 
-			try {
-				metadata = ImageMetadataReader.readMetadata(f);
-				Directory directory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
-				if (directory != null) {
-					date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
+				try {
+					metadata = ImageMetadataReader.readMetadata(f);
+					Directory directory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
+					if (directory != null) {
+						date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
+					}
+				} catch (ImageProcessingException e) {
+					// TODO Auto-generated catch block
+					// e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					// e.printStackTrace();
 				}
-			} catch (ImageProcessingException e) {
-				// TODO Auto-generated catch block
-//				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-//				e.printStackTrace();
+
 			}
-			if (date == null) {
-				date = new Date(f.lastModified());
-			}
-			return date;
 		}
+		if (date == null) {
+			date = new Date(f.lastModified());
+		}
+		return date;
 	}
 
 	public void pickFile(File f, String mode) {
@@ -144,10 +143,10 @@ public class PhotoPicker {
 
 	public static void main(String[] args) {
 		PhotoPicker p = new PhotoPicker();
-		
-//		if (args==null||args.length==0){
-//			args= new String [] {"F:\\ffb\\03_picture\\source","F:\\ffb\\03_picture","2",""};
-//		}
+
+		if (args == null || args.length == 0) {
+			args = new String[] { "E:\\picture\\source", "E:\\picture\\", "2", "0" };
+		}
 		if (p.precheck(args)) {
 			p.pick();
 		}
