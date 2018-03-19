@@ -6,18 +6,20 @@ after using this tool
 your directories look like as follow:
 
 E:\photos\2017
-          ├─201701          
-          ├─201702
-          ├─201703
-          ├─201704
+
+          ├─201701 	
+          ├─201702 
+          ├─201703 
+          ├─201704 
           ├─201705
-          ├─201706
-          ├─201707          
-          ├─201708
+          ├─201706 
+          ├─201707
+          ├─201708 
           ├─201709
           ├─201710
           ├─201711
           └─201712
+
           
 So that you can fild you photos easily if you know when you shoot them.
 
