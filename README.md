@@ -2,7 +2,7 @@
 
 This little tool is used to classify the photos on the computer, it can create the directory named with year and month, then pick the photos into certain directory according the shooting date.
 
-after using this tool 
+After using this tool 
 your directories look like as follow:
 
 E:\photos\2017
@@ -21,5 +21,5 @@ E:\photos\2017
           └─201712
 
           
-So that you can fild you photos easily if you know when you shoot them.
+So that you can find you photos easily if you know when you shooted them.
 
